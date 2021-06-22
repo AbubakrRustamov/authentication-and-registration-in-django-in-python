@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <!-- Using-FontAwesome -------------------------------------->
+    <script src="https://kit.fontawesome.com/c8e4d183c2.js"
+    crossorigin="anonymous"></script>
+    <!-- Using-style CDN ---------------------------------------->
+    <link rel="stylesheet" href="{% static 'css/styler.css' %}">
+</head>
+<body>
+    <!-- hearder------------------------------------------------->
+    {% block content %}
+    <header>
+            <div class="registration_card">
+                <div class="registration_r">
+                    <h1>Регистрация</h1><br><br>
+                    <form action="{% url 'registr' %}" method="POST">
+                        {% csrf_token %}
+                        <i class="fas fa-user-tie"></i>
+                        <input type="text" name="username" class="username" placeholder=" Имя пользователя" width=""><br><br><br>
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="email" class="email" placeholder="Email"><br><br><br>
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="password1" class="password" placeholder="Пароль"><br><br><br>
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="password2" class="password" placeholder=" Павторите свой пароль"><br><br><br>
+                        <button class="btnr" type="submit">Зарегистьрирова</button>
+                    </form>
+                </div>
+                    <img class="imager" src="{% static 'img/reg.png' %}" alt="" width="250" height="200"><br><br>
+                    <a href="{% url 'login' %}" class="a1">У меня есть аккаунт</a>
+            </div>
+
+        <div>
+            {% for massage in massages %}
+            <h3>{{massage}}</h3>
+            {% endfor %}
+        </div>
+    </header>
+ {% endblock %}
+</body>
+</html>

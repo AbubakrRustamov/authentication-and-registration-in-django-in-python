@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <!-- Using-FontAwesome -------------------------------------->
+    <script src="https://kit.fontawesome.com/c8e4d183c2.js"
+    crossorigin="anonymous"></script>
+    <!-- Using-style CDN ---------------------------------------->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- hearder------------------------------------------------->
+    {% block content %}
+    <header>
+       <form action="{% url 'login' %}" method="POST">
+            <div class="registration_card">
+                <img  class="imges" src="{% static 'img/desk.png' %}" alt="" width="250" height="300">
+                <div class="registration_s">
+                    <h1>Авторизация</h1><br><br>
+                    {% csrf_token %}
+                    <i class="fas fa-user-tie"></i>
+                    <input type="text" name="username" class="username" placeholder=" Имя пользователя" width=""><br><br><br>
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" class="password" placeholder="Пароль"><br><br><br>
+                    <input type="checkbox" name="checkbox">
+                    <a href="" class="a1"> Запомнить меня</a><br><br><br>
+                    <button class="btns" type="submit">Авторизация</button>
+                </div>
+                <a href="{% url 'registr' %}" class="a12">Создать аккаунт</a>
+            </div>
+       </form>
+        <div>
+            {% for massage in massages %}
+            <h3>{{massage}}</h3>
+            {% endfor %}
+        </div>
+    </header>
+    {% endblock %}
+
+</body>
+</html>
